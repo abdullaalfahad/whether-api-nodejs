@@ -6,17 +6,17 @@ const location = process.argv[2];
 
 if(!location) return console.log("please add location!");
 
-geoCode(location, (error, data) => {
+geoCode(location, (error, {latitude, longitude, location}) => {
     if(error) {
       return console.log("Error", error);
     } 
 
-    forecast(data.latitude, data.longitude, (error, forecastdata) => {
+    forecast(latitude, longitude, (error, forecastdata) => {
         if(error) {
             return console.log(error);
         } 
 
-        console.log(data.location,forecastdata);
+        console.log(location, forecastdata);
     })
 
     
